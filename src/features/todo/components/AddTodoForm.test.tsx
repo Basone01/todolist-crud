@@ -1,15 +1,15 @@
 import { render } from "@testing-library/react";
 import React from "react";
-import TodoForm from "./TodoForm";
+import AddTodoForm from "./AddTodoForm";
 
-describe("TodoForm", () => {
+describe("AddTodoForm", () => {
   it("render all input values", () => {
     const initialValue = {
       title: "title",
       description: "description",
     };
     const { getByLabelText, getByText } = render(
-      <TodoForm values={initialValue} onChange={() => {}} />
+      <AddTodoForm values={initialValue} onChange={() => {}} />
     );
 
     const titleInput = getByLabelText(/title/i);

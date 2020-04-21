@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { ToDoListFeature } from "../types";
 
-export default function TodoForm({
+export default function AddTodoForm({
   values = {},
   onSubmit,
   onChange,
@@ -22,8 +22,6 @@ export default function TodoForm({
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>NEW TASK</h3>
-
       <label htmlFor="title">Title</label>
       <input
         type="text"

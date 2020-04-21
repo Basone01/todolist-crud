@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import TodoFormContainer from "../containers/TodoFormContainer";
+import AddTodoFormContainer from "../containers/AddTodoFormContainer";
 import { useTodoContext } from "../todoContext";
 import { ToDoListFeature } from "../types";
 import { Link } from "react-router-dom";
@@ -24,7 +24,8 @@ export default function AddTodoPage() {
 
   return (
     <>
-      <TodoFormContainer onSubmit={handleCreateTodo} />
+      <h3>NEW TASK</h3>
+      <AddTodoFormContainer onSubmit={handleCreateTodo} />
       <div>
         <Link to="/todos">View</Link>
       </div>

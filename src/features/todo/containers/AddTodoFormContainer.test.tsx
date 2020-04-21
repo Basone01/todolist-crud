@@ -1,12 +1,12 @@
 import { render, fireEvent, wait } from "@testing-library/react";
 import React from "react";
-import TodoFormContainer from "./TodoFormContainer";
+import AddTodoFormContainer from "./AddTodoFormContainer";
 
 test("render form with corrected submitted values", async () => {
   const onSubmit = jest.fn();
 
   const { getByLabelText, getByText } = render(
-    <TodoFormContainer onSubmit={onSubmit} />
+    <AddTodoFormContainer onSubmit={onSubmit} />
   );
 
   // input form value
