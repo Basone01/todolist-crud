@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import ProtectedRoute from "features/auth/ProtectedRoute";
 import TodoListPage from "features/todo/pages/TodoListPage";
 import AddTodoPage from "features/todo/pages/AddTodoPage";
+import EditTodoPage from "features/todo/pages/EditTodoPage";
 
 function App() {
   const { isLoadingFirstAuth } = useAuthContext();
@@ -12,6 +13,11 @@ function App() {
   return (
     <Switch>
       <Route path="/todos" exact component={ProtectedRoute(TodoListPage)} />
+      <Route
+        path="/todos/:_id"
+        exact
+        component={ProtectedRoute(EditTodoPage)}
+      />
       <Route path="/todos/add" exact component={ProtectedRoute(AddTodoPage)} />
       <Route path="/login" component={LoginPage} />
     </Switch>
