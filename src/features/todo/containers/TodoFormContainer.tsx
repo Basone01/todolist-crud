@@ -1,5 +1,5 @@
 import React from "react";
-import { FormikContext, useFormik } from "formik";
+import { useFormik } from "formik";
 import TodoForm from "../components/TodoForm";
 import { ToDoListFeature } from "../types";
 
@@ -17,9 +17,12 @@ export default function TodoFormContainer({ onSubmit }: IProps) {
       onSubmit(values);
     },
   });
+
   return (
-    <FormikContext.Provider value={formikContext}>
-      <TodoForm />
-    </FormikContext.Provider>
+    <TodoForm
+      values={formikContext.values}
+      onSubmit={formikContext.submitForm}
+      onChange={formikContext.handleChange}
+    />
   );
 }

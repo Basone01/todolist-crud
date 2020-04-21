@@ -1,7 +1,6 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import TodoForm from "./TodoForm";
-import { Formik } from "formik";
 
 describe("TodoForm", () => {
   it("render all input values", () => {
@@ -10,9 +9,7 @@ describe("TodoForm", () => {
       description: "description",
     };
     const { getByLabelText, getByText } = render(
-      <Formik initialValues={initialValue} onSubmit={console.log}>
-        <TodoForm />
-      </Formik>
+      <TodoForm values={initialValue} onChange={() => {}} />
     );
 
     const titleInput = getByLabelText(/title/i);

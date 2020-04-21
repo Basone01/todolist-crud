@@ -1,18 +1,23 @@
 import React, { useCallback } from "react";
-import { useFormikContext, useField } from "formik";
+import { ToDoListFeature } from "../types";
 
-export default function TodoForm() {
-  const { submitForm } = useFormikContext();
-
-  const [titleField] = useField("title");
-  const [descriptionField] = useField("description");
+export default function TodoForm({
+  values = {},
+  onSubmit,
+  onChange,
+}: {
+  values: Partial<ToDoListFeature.ITodoForm>;
+  onSubmit?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}) {
+  const { title = "", description = "" } = values;
 
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      submitForm();
+      onSubmit && onSubmit();
     },
-    [submitForm]
+    [onSubmit]
   );
 
   return (
@@ -20,10 +25,22 @@ export default function TodoForm() {
       <h3>NEW TASK</h3>
 
       <label htmlFor="title">Title</label>
-      <input type="text" id="title" {...titleField} />
+      <input
+        type="text"
+        id="title"
+        name="title"
+        value={title}
+        onChange={onChange}
+      />
 
       <label htmlFor="description">Description</label>
-      <input type="text" id="description" {...descriptionField} />
+      <input
+        type="text"
+        id="description"
+        name="description"
+        value={description}
+        onChange={onChange}
+      />
 
       <button type="submit">Add</button>
     </form>
