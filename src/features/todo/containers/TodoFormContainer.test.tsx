@@ -9,6 +9,8 @@ test("render form with corrected submitted values", async () => {
     <TodoFormContainer onSubmit={onSubmit} />
   );
 
+  // input form value
+
   const titleInput = getByLabelText(/title/i);
   await wait(() => {
     fireEvent.change(titleInput, {
@@ -32,12 +34,26 @@ test("render form with corrected submitted values", async () => {
 
   const submitButton = getByText(/add/i);
 
+  // submit form
+
   await wait(() => {
     fireEvent.click(submitButton);
   });
 
-  expect(onSubmit).toHaveBeenCalledWith({
+  const submittedValues = onSubmit.mock.calls[0][0];
+  const formActions = onSubmit.mock.calls[0][1];
+
+  expect(submittedValues).toEqual({
     description: "sample description",
     title: "sample title",
   });
+
+  // reset form after submit
+
+  await wait(() => {
+    formActions.resetForm();
+  });
+
+  expect(titleInput).toHaveValue("");
+  expect(descriptionInput).toHaveValue("");
 });
