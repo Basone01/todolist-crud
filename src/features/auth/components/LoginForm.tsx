@@ -1,5 +1,6 @@
 import React from "react";
 import { LoginFeature } from "features/auth/types";
+import { Flexbox, InputLabel } from "common";
 
 export default function LoginForm({
   values,
@@ -13,23 +14,29 @@ export default function LoginForm({
   const { username, password } = values;
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="username">Username</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        onChange={onChange}
-        value={username}
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        onChange={onChange}
-        value={password}
-      />
-      <button type="submit">Login</button>
+      <Flexbox flexDirection="column" mb="0.5rem">
+        <InputLabel htmlFor="username">Username</InputLabel>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          onChange={onChange}
+          value={username}
+        />
+      </Flexbox>
+      <Flexbox flexDirection="column" mb="0.5rem">
+        <InputLabel htmlFor="password">Password</InputLabel>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          onChange={onChange}
+          value={password}
+        />
+      </Flexbox>
+      <Flexbox flexDirection="row" justifyContent="center" my="1rem">
+        <button type="submit">Login</button>
+      </Flexbox>
     </form>
   );
 }

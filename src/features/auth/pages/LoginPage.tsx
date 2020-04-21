@@ -8,6 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import { LoginFeature } from "../types";
+import { Container } from "common";
 
 export default function LoginPage() {
   const history = useHistory();
@@ -34,5 +35,10 @@ export default function LoginPage() {
     return <Redirect to="/todos" />;
   }
 
-  return <LoginFormContainer onSubmit={handleSubmitLogin} />;
+  return (
+    <Container>
+      <h2>TODO LIST</h2>
+      <LoginFormContainer onSubmit={handleSubmitLogin} />
+    </Container>
+  );
 }

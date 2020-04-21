@@ -3,6 +3,7 @@ import AddTodoFormContainer from "../containers/AddTodoFormContainer";
 import { useTodoContext } from "../todoContext";
 import { ToDoListFeature } from "../types";
 import { useHistory } from "react-router-dom";
+import { Container } from "common";
 
 export default function AddTodoPage() {
   const history = useHistory();
@@ -30,11 +31,13 @@ export default function AddTodoPage() {
 
   return (
     <>
-      <h3>NEW TASK</h3>
-      <AddTodoFormContainer
-        onSubmit={handleCreateTodo}
-        onCancel={handleCancel}
-      />
+      <Container>
+        <h3>NEW TASK</h3>
+        <AddTodoFormContainer
+          onSubmit={handleCreateTodo}
+          onCancel={handleCancel}
+        />
+      </Container>
     </>
   );
 }

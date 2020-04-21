@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { ToDoListFeature } from "../types";
+import { Flexbox, InputLabel } from "common";
 
 export default function AddTodoForm({
   values = {},
@@ -24,8 +25,8 @@ export default function AddTodoForm({
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="title">Title</label>
+      <Flexbox flexDirection="column" mb="0.5rem">
+        <InputLabel htmlFor="title">Title</InputLabel>
         <input
           type="text"
           id="title"
@@ -33,9 +34,10 @@ export default function AddTodoForm({
           value={title}
           onChange={onChange}
         />
-      </div>
-      <div>
-        <label htmlFor="description">Description</label>
+      </Flexbox>
+
+      <Flexbox flexDirection="column" mb="0.5rem">
+        <InputLabel htmlFor="description">Description</InputLabel>
         <input
           type="text"
           id="description"
@@ -43,13 +45,13 @@ export default function AddTodoForm({
           value={description}
           onChange={onChange}
         />
-      </div>
-      <div>
+      </Flexbox>
+      <Flexbox flexDirection="row" justifyContent="center" my="1rem">
         <button type="button" onClick={onCancel}>
           Cancel
         </button>
         <button type="submit">Add</button>
-      </div>
+      </Flexbox>
     </form>
   );
 }

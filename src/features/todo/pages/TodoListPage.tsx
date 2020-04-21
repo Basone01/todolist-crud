@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useTodoContext } from "../todoContext";
 import TodoList from "../components/TodoList";
+import { Container, Flexbox } from "common";
 
 export default function TodoListPage() {
   const history = useHistory();
@@ -43,10 +44,19 @@ export default function TodoListPage() {
 
   return (
     <>
-      <TodoList todos={todos} onRemove={handleDeleteTodo} onEdit={handleEdit} />
-      <div>
-        <Link to="/todos/add">Create</Link>
-      </div>
+      <Container>
+        <h2>TODO</h2>
+        <TodoList
+          todos={todos}
+          onRemove={handleDeleteTodo}
+          onEdit={handleEdit}
+        />
+        <Flexbox flexDirection="row" justifyContent="center" my="1rem">
+          <Link to="/todos/add">
+            <button type="button">Create</button>
+          </Link>
+        </Flexbox>
+      </Container>
     </>
   );
 }

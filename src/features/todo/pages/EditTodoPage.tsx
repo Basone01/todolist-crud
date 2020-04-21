@@ -4,6 +4,7 @@ import { useTodoContext } from "../todoContext";
 import { ToDoListFeature } from "../types";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import { useServiceContext } from "ServiceContext";
+import { Container } from "common";
 
 export default function EditTodoPage() {
   const history = useHistory();
@@ -58,12 +59,14 @@ export default function EditTodoPage() {
 
   return (
     <>
-      <h3>EDIT TASK</h3>
-      <EditTodoFormContainer
-        initialValues={{ title: todo.title, description: todo.description }}
-        onSubmit={handleCreateTodo}
-        onCancel={handleCancel}
-      />
+      <Container>
+        <h3>EDIT TASK</h3>
+        <EditTodoFormContainer
+          initialValues={{ title: todo.title, description: todo.description }}
+          onSubmit={handleCreateTodo}
+          onCancel={handleCancel}
+        />
+      </Container>
     </>
   );
 }
