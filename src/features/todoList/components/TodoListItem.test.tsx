@@ -4,7 +4,11 @@ import React from "react";
 import TodoListItem from "./TodoListItem";
 
 describe("TodoListItem", () => {
-  const todo = { title: "Sample Title", description: "Sample Description" };
+  const todo = {
+    _id: "sample_id",
+    title: "Sample Title",
+    description: "Sample Description",
+  };
 
   it("should render title", () => {
     const { getByText } = render(<TodoListItem todo={todo} />);
