@@ -1,12 +1,12 @@
 import { render, fireEvent, wait } from "@testing-library/react";
 import React from "react";
-import AddTodoFormContainer from "./AddTodoFormContainer";
+import EditTodoFormContainer from "./EditTodoFormContainer";
 
 test("render form with corrected submitted values", async () => {
   const onSubmit = jest.fn();
 
   const { getByLabelText, getByText } = render(
-    <AddTodoFormContainer onSubmit={onSubmit} />
+    <EditTodoFormContainer onSubmit={onSubmit} />
   );
 
   // input form value
@@ -32,7 +32,7 @@ test("render form with corrected submitted values", async () => {
   });
   expect(descriptionInput).toHaveValue("sample description");
 
-  const submitButton = getByText(/add/i);
+  const submitButton = getByText(/edit/i);
 
   // submit form
 
