@@ -1,9 +1,11 @@
 import React, { useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useTodoContext } from "../todoContext";
 import TodoList from "../components/TodoList";
 
 export default function TodoListPage() {
+  const history = useHistory();
+
   const { fetchAllTodos, todos, deleteTodo } = useTodoContext();
 
   const handleDeleteTodo = useCallback(
@@ -21,12 +23,19 @@ export default function TodoListPage() {
     [deleteTodo, todos]
   );
 
+  const handleEdit = useCallback(
+    (_id: string) => {
+      history.push(`/todos/${_id}`);
+    },
+    [history]
+  );
+
   useEffect(() => {
     (async function () {
       try {
         await fetchAllTodos();
       } catch (error) {
-        alert("Something went wrong while deleting todo");
+        alert("Something went wrong while fetching todo");
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,7 +43,7 @@ export default function TodoListPage() {
 
   return (
     <>
-      <TodoList todos={todos} onRemove={handleDeleteTodo} />
+      <TodoList todos={todos} onRemove={handleDeleteTodo} onEdit={handleEdit} />
       <div>
         <Link to="/todos/add">Create</Link>
       </div>
