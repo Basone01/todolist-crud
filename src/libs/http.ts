@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-type IHttpConfig = AxiosRequestConfig;
+export type IHttpConfig = AxiosRequestConfig;
 
 export default class HTTP {
   baseUrl: string;
