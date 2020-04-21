@@ -9,6 +9,7 @@ interface IProps {
     values: ToDoListFeature.ITodoForm,
     formActions: { resetForm: () => void }
   ) => void;
+  onCancel?: () => void;
 }
 
 export default function EditTodoFormContainer({
@@ -17,6 +18,7 @@ export default function EditTodoFormContainer({
     title: "",
     description: "",
   },
+  onCancel,
 }: IProps) {
   const formikContext = useFormik<ToDoListFeature.ITodoForm>({
     initialValues: initialValues,
@@ -30,6 +32,7 @@ export default function EditTodoFormContainer({
       values={formikContext.values}
       onSubmit={formikContext.submitForm}
       onChange={formikContext.handleChange}
+      onCancel={onCancel}
     />
   );
 }

@@ -19,5 +19,6 @@ describe("AddTodoForm", () => {
     expect(descriptionInput).toHaveValue(initialValue.description);
 
     const addButton = getByText(/add/i);
+    const cancelButton = getByText(/cancel/i);
   });
 });

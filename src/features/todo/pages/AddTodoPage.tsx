@@ -2,9 +2,10 @@ import React, { useCallback } from "react";
 import AddTodoFormContainer from "../containers/AddTodoFormContainer";
 import { useTodoContext } from "../todoContext";
 import { ToDoListFeature } from "../types";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function AddTodoPage() {
+  const history = useHistory();
   const { createTodo } = useTodoContext();
 
   const handleCreateTodo = useCallback(
@@ -22,10 +23,17 @@ export default function AddTodoPage() {
     [createTodo]
   );
 
+  const handleCancel = useCallback(() => {
+    history.push("/todos");
+  }, [history]);
+
   return (
     <>
       <h3>NEW TASK</h3>
-      <AddTodoFormContainer onSubmit={handleCreateTodo} />
+      <AddTodoFormContainer
+        onSubmit={handleCreateTodo}
+        onCancel={handleCancel}
+      />
       <div>
         <Link to="/todos">View</Link>
       </div>

@@ -34,7 +34,7 @@ export default function TodoListPage() {
 
   return (
     <>
-      <TodoList todos={todos} onRemove={handleDeleteTodo} />;
+      <TodoList todos={todos} onRemove={handleDeleteTodo} />
       <div>
         <Link to="/todos/add">Create</Link>
       </div>

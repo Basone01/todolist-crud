@@ -2,10 +2,11 @@ import React, { useCallback, useState, useEffect } from "react";
 import EditTodoFormContainer from "../containers/EditTodoFormContainer";
 import { useTodoContext } from "../todoContext";
 import { ToDoListFeature } from "../types";
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch, useHistory } from "react-router-dom";
 import { useServiceContext } from "ServiceContext";
 
 export default function EditTodoPage() {
+  const history = useHistory();
   const match = useRouteMatch<{ _id: string }>("/todos/:_id");
 
   const { todoService } = useServiceContext();
@@ -42,6 +43,10 @@ export default function EditTodoPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleCancel = useCallback(() => {
+    history.push("/todos");
+  }, [history]);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -56,6 +61,7 @@ export default function EditTodoPage() {
       <EditTodoFormContainer
         initialValues={{ title: todo.title, description: todo.description }}
         onSubmit={handleCreateTodo}
+        onCancel={handleCancel}
       />
     </>
   );
