@@ -1,9 +1,9 @@
 import React from "react";
-import LoginPage from "features/auth/LoginPage";
+import LoginPage from "features/auth/pages/LoginPage";
 import { useAuthContext } from "features/auth/authContext";
 import { Switch, Route } from "react-router-dom";
 import ProtectedRoute from "features/auth/ProtectedRoute";
-import TodoListPage from "features/todo/TodoListPage";
+import TodoListPage from "features/todo/pages/TodoListPage";
 
 function App() {
   const { isLoadingFirstAuth } = useAuthContext();

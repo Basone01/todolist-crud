@@ -1,13 +1,13 @@
 import React, { useCallback } from "react";
 import LoginFormContainer from "features/auth/containers/LoginFormContainer";
-import { useAuthContext } from "./authContext";
+import { useAuthContext } from "../authContext";
 import {
   useLocation,
   RouteComponentProps,
   useHistory,
   Redirect,
 } from "react-router-dom";
-import { LoginFeature } from "./types";
+import { LoginFeature } from "../types";
 
 export default function LoginPage() {
   const history = useHistory();
