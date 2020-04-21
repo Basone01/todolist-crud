@@ -4,4 +4,9 @@ export namespace ToDoListFeature {
     title: string;
     description: string;
   };
+
+  type ITodoForm = {
+    title: string;
+    description: string;
+  };
 }
