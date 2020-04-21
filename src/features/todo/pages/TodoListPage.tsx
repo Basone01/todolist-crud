@@ -7,18 +7,28 @@ export default function TodoListPage() {
   const { fetchAllTodos, todos, deleteTodo } = useTodoContext();
 
   const handleDeleteTodo = useCallback(
-    (_id: string) => {
+    async (_id: string) => {
       const todo = todos.find((todo) => todo._id === _id);
 
       const confirmed = window.confirm(`Delete ${todo?.title}?`);
       if (!confirmed) return;
-
-      deleteTodo(_id);
+      try {
+        await deleteTodo(_id);
+      } catch (error) {
+        alert("Something went wrong while deleting todo");
+      }
     },
     [deleteTodo, todos]
   );
+
   useEffect(() => {
-    fetchAllTodos();
+    (async function () {
+      try {
+        await fetchAllTodos();
+      } catch (error) {
+        alert("Something went wrong while deleting todo");
+      }
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

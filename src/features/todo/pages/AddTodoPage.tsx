@@ -16,7 +16,7 @@ export default function AddTodoPage() {
         await createTodo(todo);
         formActions.resetForm();
       } catch (error) {
-        alert(error.message);
+        alert("Something went wrong while adding todo");
       }
     },
     [createTodo]

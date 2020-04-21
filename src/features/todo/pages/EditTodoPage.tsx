@@ -20,7 +20,7 @@ export default function EditTodoPage() {
       try {
         await updateTodo(_id, todo);
       } catch (error) {
-        alert(error.message);
+        alert("Something went wrong while updating todo");
       }
     },
     [_id, updateTodo]
@@ -33,6 +33,7 @@ export default function EditTodoPage() {
         const todo = await todoService.getById(_id);
         setTodo(todo);
       } catch (error) {
+        alert("Something went wrong while getting todo");
       } finally {
         setLoading(false);
       }
