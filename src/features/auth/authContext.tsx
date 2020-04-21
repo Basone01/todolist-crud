@@ -39,10 +39,14 @@ export function AuthContextProvider({ children }: React.PropsWithChildren<{}>) {
         authService.getPersistedToken();
         if (authService.token) {
           await todoService.getAll();
+          setIsAuth(true);
         }
-        setIsAuth(true);
       } catch (error) {
-        authService.clearToken();
+        const isInvalidToken = error.status === 401;
+        if (isInvalidToken) {
+          authService.clearToken();
+        }
+        setIsAuth(false);
       } finally {
         setIsLoadingFirstAuth(false);
       }
