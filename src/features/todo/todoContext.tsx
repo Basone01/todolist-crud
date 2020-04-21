@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 
 import { createContext, useContext, useState } from "react";
 import { ToDoListFeature } from "./types";
@@ -6,6 +6,7 @@ import { useServiceContext } from "ServiceContext";
 
 type ITodoContext = {
   todos: ToDoListFeature.ITodo[];
+  isLoadingTodos?: boolean;
   createTodo: (todo: ToDoListFeature.ITodoForm) => Promise<void>;
   deleteTodo: (_id: string) => Promise<void>;
   updateTodo: (_id: any, todo: ToDoListFeature.ITodoForm) => Promise<void>;
@@ -26,6 +27,7 @@ export function useTodoContext() {
 export function TodoProvider({ children }: React.PropsWithChildren<{}>) {
   const { todoService } = useServiceContext();
   const [todos, setTodos] = useState<ToDoListFeature.ITodo[]>([]);
+  const [isLoadingTodos, setIsLoadingTodos] = useState(true);
 
   const addTodo = useCallback((todo: ToDoListFeature.ITodo) => {
     setTodos((todos) => todos.concat(todo));
@@ -51,10 +53,13 @@ export function TodoProvider({ children }: React.PropsWithChildren<{}>) {
 
   const fetchAllTodos = useCallback(async () => {
     try {
+      setIsLoadingTodos(true);
       const responseTodos = await todoService.getAll();
       setTodos(responseTodos);
     } catch (error) {
-      console.error(error);
+      alert(error.data.message);
+    } finally {
+      setIsLoadingTodos(false);
     }
   }, [todoService]);
 
@@ -98,6 +103,7 @@ export function TodoProvider({ children }: React.PropsWithChildren<{}>) {
 
   const context = {
     todos,
+    isLoadingTodos,
     createTodo,
     deleteTodo,
     updateTodo,
