@@ -9,6 +9,10 @@ export default class HTTP {
     this.baseUrl = baseUrl;
   }
 
+  setBaseUrl(baseUrl: string) {
+    this.baseUrl = baseUrl;
+  }
+
   async get<T = {}>(url: string, config?: IHttpConfig) {
     return axios
       .get<T>(`${this.baseUrl}${url}`, config)
