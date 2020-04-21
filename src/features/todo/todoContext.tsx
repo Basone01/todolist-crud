@@ -9,6 +9,7 @@ type ITodoContext = {
   createTodo: (todo: ToDoListFeature.ITodoForm) => Promise<void>;
   deleteTodo: (_id: string) => Promise<void>;
   updateTodo: (_id: any, todo: ToDoListFeature.ITodoForm) => Promise<void>;
+  fetchAllTodos: () => Promise<void>;
 };
 
 const TodoContext = createContext<ITodoContext | null>(null);
@@ -95,17 +96,12 @@ export function TodoProvider({ children }: React.PropsWithChildren<{}>) {
     [replaceTodo, todoService]
   );
 
-  useEffect(() => {
-    fetchAllTodos();
-    return () => {};
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const context = {
     todos,
     createTodo,
     deleteTodo,
     updateTodo,
+    fetchAllTodos,
   };
 
   return (

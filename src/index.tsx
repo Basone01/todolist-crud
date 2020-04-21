@@ -5,12 +5,15 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "features/auth/authContext";
+import { TodoProvider } from "features/todo/todoContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>
-        <App />
+        <TodoProvider>
+          <App />
+        </TodoProvider>
       </AuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>,

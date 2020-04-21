@@ -4,7 +4,10 @@ import TodoForm from "../components/TodoForm";
 import { ToDoListFeature } from "../types";
 
 interface IProps {
-  onSubmit: (values: ToDoListFeature.ITodoForm) => void;
+  onSubmit: (
+    values: ToDoListFeature.ITodoForm,
+    formActions: { resetForm: () => void }
+  ) => void;
 }
 
 export default function TodoFormContainer({ onSubmit }: IProps) {
@@ -13,8 +16,8 @@ export default function TodoFormContainer({ onSubmit }: IProps) {
       title: "",
       description: "",
     },
-    onSubmit: async (values) => {
-      onSubmit(values);
+    onSubmit: async (values, formikActions) => {
+      onSubmit(values, { resetForm: formikActions.resetForm });
     },
   });
 
