@@ -13,12 +13,12 @@ function App() {
   return (
     <Switch>
       <Route path="/todos" exact component={ProtectedRoute(TodoListPage)} />
+      <Route path="/todos/add" exact component={ProtectedRoute(AddTodoPage)} />
       <Route
         path="/todos/:_id"
         exact
         component={ProtectedRoute(EditTodoPage)}
       />
-      <Route path="/todos/add" exact component={ProtectedRoute(AddTodoPage)} />
       <Route path="/login" component={LoginPage} />
     </Switch>
   );
