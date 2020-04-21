@@ -16,11 +16,12 @@ export default function AddTodoPage() {
       try {
         await createTodo(todo);
         formActions.resetForm();
+        history.push("/todos");
       } catch (error) {
         alert("Something went wrong while adding todo");
       }
     },
-    [createTodo]
+    [createTodo, history]
   );
 
   const handleCancel = useCallback(() => {
@@ -34,9 +35,6 @@ export default function AddTodoPage() {
         onSubmit={handleCreateTodo}
         onCancel={handleCancel}
       />
-      <div>
-        <Link to="/todos">View</Link>
-      </div>
     </>
   );
 }

@@ -20,11 +20,12 @@ export default function EditTodoPage() {
     async (todo: ToDoListFeature.ITodoForm) => {
       try {
         await updateTodo(_id, todo);
+        history.push("/todos");
       } catch (error) {
         alert("Something went wrong while updating todo");
       }
     },
-    [_id, updateTodo]
+    [_id, history, updateTodo]
   );
 
   useEffect(() => {
