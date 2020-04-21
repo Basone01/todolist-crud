@@ -27,7 +27,11 @@ describe("TodoList", () => {
     const listItems = getAllByTestId("todo-list-item");
 
     expect(listItems).toHaveLength(3);
+  });
 
-    listItems.forEach((listItem) => {});
+  it("should render empty message when no todo", () => {
+    const { getByText } = render(<TodoList todos={[]} />);
+
+    const p = getByText(/empty/i);
   });
 });
