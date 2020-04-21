@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import AddTodoFormContainer from "../containers/AddTodoFormContainer";
 import { useTodoContext } from "../todoContext";
 import { ToDoListFeature } from "../types";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function AddTodoPage() {
   const history = useHistory();
