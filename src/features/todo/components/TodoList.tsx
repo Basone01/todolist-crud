@@ -4,8 +4,10 @@ import TodoListItem from "./TodoListItem";
 
 export default function TodoList({
   todos,
+  onRemove,
 }: {
   todos: ToDoListFeature.ITodo[];
+  onRemove?: (_id: string) => void;
 }) {
   if (todos.length === 0) {
     return <p>Empty press 'Create' for add new todo</p>;
@@ -13,7 +15,7 @@ export default function TodoList({
   return (
     <div data-testid="todo-list">
       {todos.map((todo) => (
-        <TodoListItem key={todo._id} todo={todo} />
+        <TodoListItem key={todo._id} todo={todo} onRemove={onRemove} />
       ))}
     </div>
   );

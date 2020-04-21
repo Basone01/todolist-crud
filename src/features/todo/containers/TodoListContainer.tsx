@@ -3,6 +3,7 @@ import { useTodoContext } from "../todoContext";
 import TodoList from "../components/TodoList";
 
 export default function TodoListContainer() {
-  const { todos } = useTodoContext();
-  return <TodoList todos={todos} />;
+  const { todos, deleteTodo } = useTodoContext();
+
+  return <TodoList todos={todos} onRemove={deleteTodo} />;
 }
