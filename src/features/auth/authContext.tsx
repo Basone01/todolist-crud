@@ -27,7 +27,10 @@ export function AuthContextProvider({ children }: React.PropsWithChildren<{}>) {
         await authService.auth(username, password);
         setIsAuth(true);
       } catch (error) {
-        alert(error.message);
+        if (error.data) {
+          throw new Error(error.data.message);
+        }
+        throw new Error(error.message);
       }
     },
     [authService]
