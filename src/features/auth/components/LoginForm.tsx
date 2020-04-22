@@ -1,6 +1,6 @@
 import React from "react";
 import { LoginFeature } from "features/auth/types";
-import { Flexbox, InputLabel, InputUnderline } from "common";
+import { Flexbox, InputLabel, InputUnderline, Button } from "common";
 
 export default function LoginForm({
   values,
@@ -35,7 +35,9 @@ export default function LoginForm({
         />
       </Flexbox>
       <Flexbox flexDirection="row" justifyContent="center" my="1rem">
-        <button type="submit">Login</button>
+        <Button primary type="submit">
+          Login
+        </Button>
       </Flexbox>
     </form>
   );
