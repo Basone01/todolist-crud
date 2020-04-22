@@ -1,6 +1,6 @@
 import React from "react";
 import { LoginFeature } from "features/auth/types";
-import { Flexbox, InputLabel } from "common";
+import { Flexbox, InputLabel, InputUnderline } from "common";
 
 export default function LoginForm({
   values,
@@ -16,7 +16,7 @@ export default function LoginForm({
     <form onSubmit={onSubmit}>
       <Flexbox flexDirection="column" mb="0.5rem">
         <InputLabel htmlFor="username">Username</InputLabel>
-        <input
+        <InputUnderline
           type="text"
           id="username"
           name="username"
@@ -26,7 +26,7 @@ export default function LoginForm({
       </Flexbox>
       <Flexbox flexDirection="column" mb="0.5rem">
         <InputLabel htmlFor="password">Password</InputLabel>
-        <input
+        <InputUnderline
           type="password"
           id="password"
           name="password"

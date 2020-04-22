@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { ToDoListFeature } from "../types";
-import { Flexbox, InputLabel } from "common";
+import { Flexbox, InputLabel, InputUnderline, InputTextArea } from "common";
 
 export default function AddTodoForm({
   values = {},
@@ -10,7 +10,7 @@ export default function AddTodoForm({
 }: {
   values: Partial<ToDoListFeature.ITodoForm>;
   onSubmit?: () => void;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<any>) => void;
   onCancel?: () => void;
 }) {
   const { title = "", description = "" } = values;
@@ -25,9 +25,9 @@ export default function AddTodoForm({
 
   return (
     <form onSubmit={handleSubmit}>
-      <Flexbox flexDirection="column" mb="0.5rem">
+      <Flexbox flexDirection="column" mb="1rem">
         <InputLabel htmlFor="title">Title</InputLabel>
-        <input
+        <InputUnderline
           type="text"
           id="title"
           name="title"
@@ -36,14 +36,16 @@ export default function AddTodoForm({
         />
       </Flexbox>
 
-      <Flexbox flexDirection="column" mb="0.5rem">
-        <InputLabel htmlFor="description">Description</InputLabel>
-        <input
-          type="text"
+      <Flexbox flexDirection="column" mb="1rem">
+        <InputLabel htmlFor="description" mb="0.25rem">
+          Description
+        </InputLabel>
+        <InputTextArea
           id="description"
           name="description"
           value={description}
           onChange={onChange}
+          rows={4}
         />
       </Flexbox>
       <Flexbox flexDirection="row" justifyContent="center" my="1rem">
