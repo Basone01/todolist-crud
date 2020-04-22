@@ -63,10 +63,10 @@ export default function AddTodoForm({
         )}
       </Flexbox>
       <Flexbox flexDirection="row" justifyContent="center" my="1rem">
-        <Button mx="0,25rem" type="button" onClick={onCancel}>
+        <Button mx="0.25rem" type="button" onClick={onCancel}>
           Cancel
         </Button>
-        <Button mx="0,25rem" primary type="submit">
+        <Button mx="0.25rem" primary type="submit">
           Edit
         </Button>
       </Flexbox>
