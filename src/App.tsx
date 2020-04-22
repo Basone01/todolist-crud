@@ -1,7 +1,7 @@
 import React from "react";
 import LoginPage from "features/auth/pages/LoginPage";
 import { useAuthContext } from "features/auth/authContext";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import ProtectedRoute from "features/auth/ProtectedRoute";
 import TodoListPage from "features/todo/pages/TodoListPage";
 import AddTodoPage from "features/todo/pages/AddTodoPage";
@@ -20,6 +20,7 @@ function App() {
         component={ProtectedRoute(EditTodoPage)}
       />
       <Route path="/login" component={LoginPage} />
+      <Redirect to="/todos" />
     </Switch>
   );
 }
