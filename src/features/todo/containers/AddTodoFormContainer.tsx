@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useFormik } from "formik";
 import AddTodoForm from "../components/AddTodoForm";
 import { ToDoListFeature } from "../types";
+import { todoFormSchema } from "../todoFormSchema";
+import { generateErrorsObject } from "../../../libs/generateErrorsObject";
 
 interface IProps {
   onSubmit: (
@@ -20,7 +22,13 @@ export default function AddTodoFormContainer({ onSubmit, onCancel }: IProps) {
     onSubmit: async (values, formikActions) => {
       onSubmit(values, { resetForm: formikActions.resetForm });
     },
+    validationSchema: todoFormSchema,
   });
+
+  const errors = useMemo(() => {
+    const { touched, errors } = formikContext;
+    return generateErrorsObject(errors, touched);
+  }, [formikContext]);
 
   return (
     <AddTodoForm
@@ -28,6 +36,7 @@ export default function AddTodoFormContainer({ onSubmit, onCancel }: IProps) {
       onSubmit={formikContext.submitForm}
       onChange={formikContext.handleChange}
       onCancel={onCancel}
+      errors={errors}
     />
   );
 }

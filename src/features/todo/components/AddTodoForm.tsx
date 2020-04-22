@@ -6,15 +6,19 @@ import {
   InputUnderline,
   InputTextArea,
   Button,
+  InputErrorMessage,
 } from "common";
+import { FormErrorsObject } from "libs/types";
 
 export default function AddTodoForm({
   values = {},
+  errors = {},
   onSubmit,
   onChange,
   onCancel,
 }: {
   values: Partial<ToDoListFeature.ITodoForm>;
+  errors?: FormErrorsObject<ToDoListFeature.ITodoForm>;
   onSubmit?: () => void;
   onChange?: (e: React.ChangeEvent<any>) => void;
   onCancel?: () => void;
@@ -40,6 +44,7 @@ export default function AddTodoForm({
           value={title}
           onChange={onChange}
         />
+        {errors.title && <InputErrorMessage>*{errors.title}</InputErrorMessage>}
       </Flexbox>
 
       <Flexbox flexDirection="column" mb="1rem">
@@ -53,6 +58,9 @@ export default function AddTodoForm({
           onChange={onChange}
           rows={4}
         />
+        {errors.description && (
+          <InputErrorMessage>*{errors.description}</InputErrorMessage>
+        )}
       </Flexbox>
       <Flexbox flexDirection="row" justifyContent="center" my="1rem">
         <Button mx="0.25rem" type="button" onClick={onCancel}>
