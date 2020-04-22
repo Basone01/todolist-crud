@@ -38,4 +38,19 @@ describe("TodoListItem", () => {
 
     expect(onRemove).toBeCalledWith(todo._id);
   });
+
+  it("should render edit button", async () => {
+    const onEdit = jest.fn();
+    const { getByTestId } = render(
+      <TodoListItem todo={todo} onEdit={onEdit} />
+    );
+
+    const buttonElement = getByTestId("edit-todo-btn");
+
+    await wait(() => {
+      fireEvent.click(buttonElement);
+    });
+
+    expect(onEdit).toBeCalledWith(todo._id);
+  });
 });

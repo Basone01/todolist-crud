@@ -1,5 +1,13 @@
 import React, { useCallback } from "react";
 import { ToDoListFeature } from "../types";
+import { Flexbox } from "common";
+import {
+  Wrapper,
+  Title,
+  Description,
+  DeleteButton,
+  EditButton,
+} from "./TodoListItem.styled";
 
 export default function TodoListItem({
   todo,
@@ -25,15 +33,21 @@ export default function TodoListItem({
   }, [_id, onEdit]);
 
   return (
-    <div data-testid="todo-list-item">
-      <h4>{title}</h4>
-      <p>{description}</p>
-      <button data-testid="delete-todo-btn" onClick={handleRemove}>
-        x
-      </button>
-      <button data-testid="edit-todo-btn" onClick={handleEdit}>
-        Edit
-      </button>
-    </div>
+    <Wrapper data-testid="todo-list-item">
+      <Flexbox flexDirection="row">
+        <Flexbox flexDirection="column">
+          <Title>{title}</Title>
+          <Description>{description}</Description>
+        </Flexbox>
+        <Flexbox flexDirection="column" flexBasis="2.5rem" flexShrink={[0]}>
+          <DeleteButton data-testid="delete-todo-btn" onClick={handleRemove}>
+            x
+          </DeleteButton>
+          <EditButton data-testid="edit-todo-btn" onClick={handleEdit}>
+            Edit
+          </EditButton>
+        </Flexbox>
+      </Flexbox>
+    </Wrapper>
   );
 }
