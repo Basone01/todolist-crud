@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { ToDoListFeature } from "../types";
-import { Flexbox } from "common";
+import { Flexbox, Button } from "common";
 import { Wrapper, Title, Description } from "./TodoListItem.styled";
 
 export default function TodoListItem({
@@ -38,12 +38,16 @@ export default function TodoListItem({
           justifyContent="space-between"
           flexShrink={[0]}
         >
-          <button data-testid="delete-todo-btn" onClick={handleRemove}>
-            x
-          </button>
-          <button data-testid="edit-todo-btn" onClick={handleEdit}>
+          <Button
+            mb="0.25rem"
+            data-testid="delete-todo-btn"
+            onClick={handleRemove}
+          >
+            X
+          </Button>
+          <Button data-testid="edit-todo-btn" onClick={handleEdit}>
             Edit
-          </button>
+          </Button>
         </Flexbox>
       </Flexbox>
     </Wrapper>

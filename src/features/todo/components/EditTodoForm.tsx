@@ -1,6 +1,12 @@
 import React, { useCallback } from "react";
 import { ToDoListFeature } from "../types";
-import { Flexbox, InputLabel, InputTextArea, InputUnderline } from "common";
+import {
+  Flexbox,
+  InputLabel,
+  InputTextArea,
+  InputUnderline,
+  Button,
+} from "common";
 
 export default function AddTodoForm({
   values = {},
@@ -49,10 +55,12 @@ export default function AddTodoForm({
         />
       </Flexbox>
       <Flexbox flexDirection="row" justifyContent="center" my="1rem">
-        <button type="button" onClick={onCancel}>
+        <Button mx="0,25rem" type="button" onClick={onCancel}>
           Cancel
-        </button>
-        <button type="submit">Edit</button>
+        </Button>
+        <Button mx="0,25rem" primary type="submit">
+          Edit
+        </Button>
       </Flexbox>
     </form>
   );
